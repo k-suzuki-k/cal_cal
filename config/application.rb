@@ -30,7 +30,11 @@ module CalCal
     # Don't generate system test files.
     config.generators.system_tests = nil
 
+    # 日本
     config.i18n.default_locale = :ja
     config.time_zone = 'Tokyo'
+
+    # template_engine
+    config.generators.template_engine = :slim
   end
 end
