@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'test#index'
+  root to: 'welcome#index'
   devise_scope :user do
     get 'login' => 'devise/sessions#new', as: :new_user_session
     post 'login' => 'devise/sessions#create', as: :user_session
