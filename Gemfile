@@ -79,6 +79,10 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+group :production do
+    gem 'mysql2'
+end
+
 # jqueryのイベントがturbolinkのせいで発火しなくなる問題を解消するgem
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
