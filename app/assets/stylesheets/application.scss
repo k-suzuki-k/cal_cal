@@ -2,4 +2,7 @@
  *= require font-awesome
  */
 
+@import "./variables/*";
+@import "./mixins/*";
 @import "bootstrap";
+@import "./reset.scss";
