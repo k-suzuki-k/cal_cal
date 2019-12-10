@@ -96,3 +96,8 @@ gem 'slim-rails'
 gem 'html2slim'
 # ページネーション
 gem 'kaminari'
+
+# login
+gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'

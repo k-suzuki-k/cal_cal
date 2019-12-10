@@ -1,0 +1,22 @@
+.row
+
+  .col-sm-6
+    h1 Welcome to cal_cal!
+    p this is calender app
+
+  .col-sm-6
+     .wv-tabs
+        .wv-tabs-header
+          .wv-tabs-header_tab.active
+            | 登録
+          .wv-tabs-header_tab
+            | ログイン
+
+        .wv-tabs-content
+          .wv-tabs-content_panel.show
+            == render "users/registrations/new", user: @user
+
+          .wv-tabs-content_panel
+            == render "users/sessions/new", user: @user
+
+/= console

@@ -1,4 +1,4 @@
-nav.navbar.navbar-light.bg-dark.navbar-expand-md
+nav.navbar.navbar-light.navbar-expand-md.nav-color
   .container
     a.navbar-brand[href="#"]
       img[src="http://via.placeholder.com/102x30/007bff/ffffff?text=logo" height="30" alt="image"]
@@ -6,3 +6,5 @@ nav.navbar.navbar-light.bg-dark.navbar-expand-md
       li.nav-item
         a.text-primary.nav-link[href="#"]
           | About
+      li.nav-item
+        = link_to "ログアウト", destroy_user_session_path, method: "delete"

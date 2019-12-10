@@ -1,0 +1,25 @@
+.wv-tabs-header {
+  display: flex;
+  justify-content: center;
+}
+.wv-tabs-header_tab {
+  flex-grow: 1;
+  padding:5px;
+  list-style:none;
+  text-align:center;
+  cursor:pointer;
+}
+.wv-tabs-content {
+  border-top:none;
+}
+.wv-tabs-content_panel {
+  display:none;
+}
+
+.wv-tabs-header_tab.active {
+  transition: all 0.2s ease-out;
+}
+
+.wv-tabs-content_panel.show {
+  display:block;
+}
