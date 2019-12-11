@@ -3,6 +3,6 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources  :users, only: [:show, :destroy, :update, :edit]
+  resources  :users, only: [:destroy, :update, :edit]
   get '/calender', to: 'users#calender'
 end
