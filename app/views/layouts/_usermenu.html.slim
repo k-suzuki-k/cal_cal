@@ -1,0 +1,16 @@
+nav.drawer-nav
+  ul.drawer-menu
+    li.drawer-menu-item
+      a[href="#"]
+        | image
+    li.drawer-menu-item
+      a[href="#"]
+        | プロフィール設定
+    li.drawer-menu-item
+      a[href="#"]
+        | いいね一覧
+    li.drawer-menu-item
+      a[href="#"]
+        | 投稿一覧
+    li.drawer-menu-item
+      = link_to "ログアウト", destroy_user_session_path, method: "delete"

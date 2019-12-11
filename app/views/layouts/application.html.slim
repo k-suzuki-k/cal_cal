@@ -7,7 +7,8 @@ html
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  body
+
+  body.drawer.drawer--right
     #wrapper
       == render "layouts/header"
 
@@ -15,3 +16,4 @@ html
         = yield
 
       == render "layouts/footer"
+
