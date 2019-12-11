@@ -12,7 +12,8 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
+  # 退会画面の表示
+  def destroy_confirm
   end
 
   def calender

@@ -1,10 +1,7 @@
 ul.list-group
   li.list-group-item
-    a[href="#"]
-      | プロフィール編集
+      = link_to "プロフィール編集", edit_user_path(current_user)
   li.list-group-item
-    a[href="#"]
-      | パスワード変更
+      = link_to "パスワード変更", edit_user_registration_path
   li.list-group-item
-    a[href="#"]
-      | 退会手続き
+      = link_to "退会手続き", user_destroy_confirm_path
