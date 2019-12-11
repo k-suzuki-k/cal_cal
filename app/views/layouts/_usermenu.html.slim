@@ -4,8 +4,7 @@ nav.drawer-nav
       a[href="#"]
         | image
     li.drawer-menu-item
-      a[href="#"]
-        | プロフィール設定
+        = link_to "プロフィール設定", user_path(current_user)
     li.drawer-menu-item
       a[href="#"]
         | いいね一覧
