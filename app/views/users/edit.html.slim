@@ -1,2 +1,37 @@
-h1 Users#edit
-p Find me in app/views/users/edit.html.slim
+.container
+  .row
+    .col-sm-2
+      == render "layouts/setting"
+
+    .col-sm-10
+      p
+        h3
+          | プロフィール編集
+
+          - if @user.image?
+            = image_tag @user.image.to_s, :size => '200x200', class: 'mg-thumbnail rounded mx-auto d-block'
+
+          - else
+            = image_tag "/assets/noimage.jpg", :size => '200x200', class: 'img-thumbnail rounded mx-auto d-block'
+
+      = form_with(model: @user, local: true) do |form|
+        .form-group
+          = form.label :name, 'ユーザー名'
+          = form.text_field :name, class: 'form-control'
+
+        .form-group
+          = form.label :email, 'メールアドレス'
+          = form.text_field :email, class: 'form-control'
+
+        .form-group
+          = form.label :image, 'プロフィール画像'
+          br
+          = form.file_field :image
+
+        .form-group
+          = form.label :profile, '自己紹介'
+          = form.text_area :profile, class: 'form-control', rows:5
+
+        = form.submit '変更する', class: 'btn btn-primary mr-4 mb-4'
+
+        = link_to "キャンセル", calender_path, class: 'btn btn-warning mb-4'

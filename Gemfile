@@ -101,3 +101,6 @@ gem 'kaminari'
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+
+# 画像アップロード
+gem 'carrierwave'
