@@ -5,16 +5,18 @@ nav.navbar.navbar-light.navbar-expand-md.nav-color
     - if user_signed_in?
       a.navbar-brand[href="#"]
         img[src="http://via.placeholder.com/102x30/007bff/ffffff?text=logo" height="30" alt="image"]
-      a.nav-item
-         = link_to "ログアウト", destroy_user_session_path, method: "delete"
-
       ul.navbar-nav.ml-auto
         li.nav-item
           a.text-primary.nav-link[href="#"]
             = fa_icon "search", text: "検索"
-        li.nav-item
-          a.text-primary.nav-link[href="#"]
+
+        /サイドメニューの表示
+        button.nav-item.drawer-toggle.drawer-hamburger[type="button"]
+          span.sr-only
+            | toggle navigation
+          span.text-primary
             = fa_icon "user", text: "プロフィール"
+        == render "layouts/usermenu"
 
     /ログインしていない場合
     - else
