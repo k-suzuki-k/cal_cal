@@ -36,5 +36,8 @@ module CalCal
 
     # template_engine
     config.generators.template_engine = :slim
+
+    # carrierwave
+    config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
   end
 end
