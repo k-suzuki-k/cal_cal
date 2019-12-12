@@ -1,19 +1,20 @@
 = form_with model: user, url: new_user_session_path, id: 'new_user', class: 'validate_field', local: true do |f|
 
-  .field
+  .field.form-group
     = f.label :email
     br
-    = f.email_field :email, autocomplete: "email", class: "validate[required,custom[email]] email_auto"
+    = f.email_field :email, autocomplete: "email", class: "form-control validate[required,custom[email]] email_auto"
 
-  .field
+  .field.form-group
     = f.label :password
     br
-    = f.password_field :password, autocomplete: "current-password", class: "validate[required,minSize[6]]"
+    = f.password_field :password, autocomplete: "current-password", class: "form-control validate[required,minSize[6]]"
 
   /- if devise_mapping.rememberable?
 
     .field
       = f.check_box :remember_me
       = f.label :remember_me
-  .actions
-    = f.submit "ログイン"
+
+  .actions.mt-5
+    = f.submit "ログイン", class: "btn btn-success btn-block rounded-pill"

@@ -1,3 +1,7 @@
+.wv-tabs {
+  background: #ffffff;
+}
+
 .wv-tabs-header {
   display: flex;
   justify-content: center;
@@ -8,6 +12,7 @@
   list-style:none;
   text-align:center;
   cursor:pointer;
+  background: $color-tag-not-background;
 }
 .wv-tabs-content {
   border-top:none;
@@ -18,6 +23,8 @@
 
 .wv-tabs-header_tab.active {
   transition: all 0.2s ease-out;
+  background: #ffffff;
+  font-size: 1.5rem;
 }
 
 .wv-tabs-content_panel.show {

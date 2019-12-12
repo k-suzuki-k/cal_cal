@@ -1,4 +1,4 @@
-.row
+.row.mt-5
 
   .col-sm-6
     h1 Welcome to cal_cal!
@@ -7,12 +7,12 @@
   .col-sm-6
      .wv-tabs
         .wv-tabs-header
-          .wv-tabs-header_tab.active
+          .wv-tabs-header_tab.rounded.active
             | 登録
-          .wv-tabs-header_tab
+          .wv-tabs-header_tab.rounded
             | ログイン
 
-        .wv-tabs-content
+        .wv-tabs-content.mt-4
           .wv-tabs-content_panel.show
             == render "users/registrations/new", user: @user
 
