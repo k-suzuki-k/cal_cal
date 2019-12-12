@@ -9,10 +9,10 @@
           | プロフィール編集
 
           - if @user.image?
-            = image_tag @user.image.to_s, :size => '200x200', class: 'mg-thumbnail rounded d-block mt-3'
+            = image_tag @user.image.to_s, :size => '300x200', class: 'mg-thumbnail rounded d-block mt-3'
 
           - else
-            = image_tag "/assets/noimage.jpg", :size => '200x200', class: 'img-thumbnail rounded d-block mt-3'
+            = image_tag "/assets/noimage.jpg", :size => '300x200', class: 'mg-thumbnail rounded d-block mt-3'
 
       = form_with(model: @user, local: true) do |form|
         .form-group
