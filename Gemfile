@@ -104,3 +104,6 @@ gem 'devise-i18n-views'
 
 # 画像アップロード
 gem 'carrierwave'
+
+# 入力フォームのバリデーション
+gem 'jQuery-Validation-Engine-rails'
