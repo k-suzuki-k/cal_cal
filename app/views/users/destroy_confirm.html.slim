@@ -1,2 +1,16 @@
-h1 Users#destroy
-p Find me in app/views/users/destroy.html.slim
+.container
+  .row
+    .col-sm-3
+      == render "layouts/setting"
+
+    .col-sm-8
+      p
+        h3
+          | 退会手続き
+        p
+          | 退会しますか？？
+
+      .btn-toolbar
+        .btn-group
+          = button_to "退会する", registration_path(current_user), data: { confirm: "本当に退会しますか？" }, method: :delete, class: 'btn btn-danger mr-4 mb-4'
+          = link_to "キャンセル", calender_path, class: 'btn btn-warning mb-4'

@@ -10,4 +10,8 @@ Rails.application.routes.draw do
 
   # 退会手続き画面
   get '/destroy_confirm', to: 'users#destroy_confirm', as: :user_destroy_confirm
+
+  # パスワード変更
+  resources  :passwords, only: [:update, :edit]
+
 end

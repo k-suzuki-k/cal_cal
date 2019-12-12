@@ -1,18 +1,18 @@
 .container
   .row
-    .col-sm-2
+    .col-sm-3
       == render "layouts/setting"
 
-    .col-sm-10
+    .col-sm-7
       p
         h3
           | プロフィール編集
 
           - if @user.image?
-            = image_tag @user.image.to_s, :size => '200x200', class: 'mg-thumbnail rounded mx-auto d-block'
+            = image_tag @user.image.to_s, :size => '200x200', class: 'mg-thumbnail rounded d-block mt-3'
 
           - else
-            = image_tag "/assets/noimage.jpg", :size => '200x200', class: 'img-thumbnail rounded mx-auto d-block'
+            = image_tag "/assets/noimage.jpg", :size => '200x200', class: 'img-thumbnail rounded d-block mt-3'
 
       = form_with(model: @user, local: true) do |form|
         .form-group
