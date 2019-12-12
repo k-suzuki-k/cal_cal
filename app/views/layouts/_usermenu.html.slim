@@ -1,15 +1,30 @@
 nav.drawer-nav
   ul.drawer-menu
-    li.drawer-menu-item
-      a[href="#"]
-        | image
+
+    /プロフィール画像
+    .text-center.mt-3.mb-3
+      - if current_user.image.blank?
+        = image_tag "/assets/noimage.jpg", :size => '100x100', class: 'img-thumbnail rounded'
+      - else
+        = image_tag current_user.image.to_s, :size => '100x100', class: 'img-thunbnail rounded'
+
+    /ユーザー名
+    h5.text-center
+      -if current_user.name.blank?
+        | no name
+      -else
+        = current_user.name
+
     li.drawer-menu-item
         = link_to "プロフィール設定", edit_user_path(current_user)
+
     li.drawer-menu-item
       a[href="#"]
         | いいね一覧
+
     li.drawer-menu-item
       a[href="#"]
         | 投稿一覧
+
     li.drawer-menu-item
       = link_to "ログアウト", destroy_user_session_path, method: "delete"
