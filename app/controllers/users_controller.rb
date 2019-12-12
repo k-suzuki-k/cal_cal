@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if user.update(user_params)
       redirect_to calender_path
     else
-      render :edit
+      redirect_to edit_user_path
     end
   end
 
