@@ -13,3 +13,11 @@ jQuery(function($){
 $(document).ready(function(){
   $(".validate_field").validationEngine();
 });
+
+//メールアドレスの入力補助
+$(document).ready(function(){
+    $(".email_auto").emailautocomplete({
+          domains: ["example.com"]
+        });
+});
+
