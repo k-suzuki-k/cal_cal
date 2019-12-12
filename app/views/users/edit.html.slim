@@ -14,14 +14,14 @@
           - else
             = image_tag "/assets/noimage.jpg", :size => '300x200', class: 'mg-thumbnail rounded d-block mt-3'
 
-      = form_with(model: @user, local: true) do |form|
+      = form_with(model: @user, local: true, class: "validate_field") do |form|
         .form-group
           = form.label :name, 'ユーザー名'
-          = form.text_field :name, class: 'form-control'
+          = form.text_field :name, class: 'form-control validate[maxSize[20]]'
 
         .form-group
           = form.label :email, 'メールアドレス'
-          = form.text_field :email, class: 'form-control'
+          = form.text_field :email, class: 'form-control validate[required,custom[email]] email_auto'
 
         .form-group
           = form.label :image, 'プロフィール画像'
@@ -30,7 +30,7 @@
 
         .form-group
           = form.label :profile, '自己紹介'
-          = form.text_area :profile, class: 'form-control', rows:5
+          = form.text_area :profile, class: 'form-control validate[maxSize[100]]', rows:5
 
         = form.submit '変更する', class: 'btn btn-primary mr-4 mb-4'
 
