@@ -1,7 +1,12 @@
-ul.list-group
-  li.list-group-item
-      = link_to "プロフィール編集", edit_user_path(current_user)
-  li.list-group-item
-      = link_to "パスワード変更", edit_user_registration_path
-  li.list-group-item
-      = link_to "退会手続き", user_destroy_confirm_path
+ul.list-group.mt-3
+  = link_to edit_user_path(current_user)
+    li.list-group-item.list-group-item-action
+      | プロフィール編集
+
+  = link_to edit_user_registration_path do
+    li.list-group-item.list-group-item-action
+      | パスワード変更
+
+  = link_to user_destroy_confirm_path do
+    li.list-group-item.list-group-item-action
+      | 退会手続き
