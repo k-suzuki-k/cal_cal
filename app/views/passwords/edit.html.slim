@@ -1,0 +1,33 @@
+.container
+  .row
+    .col-sm-3
+      == render "layouts/setting"
+
+    .col-sm-7
+      p
+        h3
+          | パスワード変更
+
+          .password_change.mt-3
+            = form_with model: @user, url: password_path, local: true do |f|
+              /= render "devise/shared/error_messages", resource: @user
+
+              .form-group
+                = f.label :current_password, "現在のパスワード"
+                br
+                = f.password_field :current_password, autocomplete: "current-password", class: 'form-control', autofocus: true
+
+              .form-group
+                = f.label :password, "新しいパスワード"
+                br
+                = f.password_field :password, autocomplete: "new-password", class: 'form-control'
+
+              .form-group
+                = f.label :password_confirmation, "新しいパスワードの確認"
+                br
+                = f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control'
+
+              .btn-toolbar
+                .btn-group
+                  = f.submit "パスワードを変更する", class: 'btn btn-primary mr-4 mb-4'
+                  = link_to "キャンセル", calender_path, class: 'btn btn-warning mb-4'

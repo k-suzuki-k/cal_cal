@@ -3,10 +3,10 @@ ul.list-group.mt-3
     li.list-group-item.list-group-item-action
       | プロフィール編集
 
-  = link_to edit_user_registration_path do
+  = link_to edit_password_path(current_user) do
     li.list-group-item.list-group-item-action
       | パスワード変更
 
-  = link_to user_destroy_confirm_path do
+  = link_to user_destroy_confirm_path(current_user) do
     li.list-group-item.list-group-item-action
       | 退会手続き
