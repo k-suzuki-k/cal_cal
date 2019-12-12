@@ -1,12 +1,14 @@
-= form_with model: user, url: new_user_session_path, id: 'new_user', class: 'new_user', local: true do |f|
+= form_with model: user, url: new_user_session_path, id: 'new_user', class: 'validate_field', local: true do |f|
+
   .field
     = f.label :email
     br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
+    = f.email_field :email, autocomplete: "email", class: "validate[required,custom[email]] email_auto"
+
   .field
     = f.label :password
     br
-    = f.password_field :password, autocomplete: "current-password"
+    = f.password_field :password, autocomplete: "current-password", class: "validate[required,minSize[6]]"
 
   /- if devise_mapping.rememberable?
 

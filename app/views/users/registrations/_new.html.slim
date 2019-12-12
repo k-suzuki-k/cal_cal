@@ -1,9 +1,11 @@
-= form_with model: user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f|
+= form_with model: user, url: user_registration_path, id: 'new_user', class: 'validate_field', local: true do |f|
   = render "devise/shared/error_messages", resource: user
+
   .field
     = f.label :email
     br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
+    = f.email_field :email, autocomplete: "email", class: "validate[required,custom[email]] email_auto"
+
   .field
     = f.label :password
     - if @minimum_password_length
@@ -12,10 +14,9 @@
         = @minimum_password_length
         |  characters minimum)
     br
-    = f.password_field :password, autocomplete: "new-password"
-  /.field
-    /= f.label :password_confirmation
-    /br
-    /= f.password_field :password_confirmation, autocomplete: "new-password"
+    = f.password_field :password, autocomplete: "new-password", class: "validate[required,minSize[6]]"
+
+
+
   .actions
     = f.submit "登録する"
