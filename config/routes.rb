@@ -1,17 +1,20 @@
 Rails.application.routes.draw do
   # ログイン&登録画面
   root to: 'welcome#index'
+  get '/welcome', to: 'welcome#index'
 
   # デバイスの設定
   devise_for :users
 
-  resources  :users, only: [:update, :edit]
-  get '/calender', to: 'users#calender'
+  authenticated :user do
+    resources  :users, only: [:update, :edit]
+    get '/calender', to: 'users#calender'
 
-  # 退会手続き画面
-  get '/destroy_confirm', to: 'users#destroy_confirm', as: :user_destroy_confirm
+    # 退会手続き画面
+    get '/destroy_confirm', to: 'users#destroy_confirm', as: :user_destroy_confirm
 
-  # パスワード変更
-  resources  :passwords, only: [:update, :edit]
+    # パスワード変更
+    resources  :passwords, only: [:update, :edit]
+  end
 
 end
