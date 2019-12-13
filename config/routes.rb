@@ -6,9 +6,13 @@ Rails.application.routes.draw do
   # デバイスの設定
   devise_for :users
 
-  authenticated :user do
+  authenticated :user do # ログインしないとアクセスできない設定
+
     resources  :users, only: [:update, :edit]
-    get '/calender', to: 'users#calender'
+
+    resources  :calender, only: [:show] do
+      resources :todo
+    end
 
     # 退会手続き画面
     get '/destroy_confirm', to: 'users#destroy_confirm', as: :user_destroy_confirm

@@ -13,4 +13,4 @@
       .btn-toolbar
         .btn-group
           = button_to "退会する", registration_path(current_user), data: { confirm: "本当に退会しますか？" }, method: :delete, class: 'btn btn-danger mr-4 mb-4'
-          = link_to "キャンセル", calender_path, class: 'btn btn-warning mb-4'
+          = link_to "キャンセル", calender_path(current_user), class: 'btn btn-warning mb-4'

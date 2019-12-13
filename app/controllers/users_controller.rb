@@ -16,9 +16,6 @@ class UsersController < ApplicationController
   def destroy_confirm
   end
 
-  def calender
-  end
-
   private
 
   def user_params
