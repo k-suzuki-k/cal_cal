@@ -8,18 +8,17 @@ table#todo_list.table
 
   .form-group
     = form.label :day, '日付'
-    = form.date_field :day, class: 'form-control'
+    = form.date_field :day, value: Time.now.strftime("%Y-%m-%d"), class: 'form-control'
+
+  .form-group.form-inline
+    = form.label :start_time, '開始時間'
+    = form.text_field :start_time, class: 'form-control timepicker ml-2 mr-2'
+    = form.label :end_time, '終了時間'
+    = form.text_field :end_time, class: 'form-control timepicker ml-2 mr-2'
 
   .form-group
     = form.label :title, 'タイトル'
     = form.text_field :title, class: 'form-control'
-
-  .form-group
-    = form.label :start_time, '開始'
-    = form.time_select :start_time, class: 'form-control'
-  .form-group
-    = form.label :end_time, '終了'
-    = form.time_select :end_time, class: 'form-control'
 
   .form-group
     = form.label :category, 'カテゴリ'
