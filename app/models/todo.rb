@@ -6,5 +6,5 @@ class Todo < ApplicationRecord
   mount_uploader :image, ImagesUploader
 
   # category setting
-  enum category: { work: 0, priv: 1 }
+  enum category: { work: 0, prive: 1 }
 end
