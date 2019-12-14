@@ -1,6 +1,7 @@
 class TodosController < ApplicationController
   def new
     @todo  = Todo.new
+    @todo.category  = "work" #radio_buttonの初期値
     @todos = Todo.where(user_id: current_user.id)
   end
 

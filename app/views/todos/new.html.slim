@@ -20,9 +20,11 @@ table#todo_list.table
     = form.label :title, 'タイトル'
     = form.text_field :title, class: 'form-control'
 
-  .form-group
-    = form.label :category, 'カテゴリ'
-    = form.text_field :category, class: 'form-control'
+  .form-group.form-inline
+    = form.label :category, '仕事'
+    = form.radio_button :category, :work, class: 'form-control ml-2 mr-2'
+    = form.label :category, '私用'
+    = form.radio_button :category, 1, class: 'form-control ml-2 mr-2'
 
   .form-group
     = form.label :content, 'メモ'
