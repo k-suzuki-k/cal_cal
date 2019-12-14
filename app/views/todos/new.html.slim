@@ -1,0 +1,40 @@
+h1 Todos#new
+
+- @todos.each do |t|
+    li
+      = t.title
+    li
+      = t.content
+
+= form_with(model: @todo, url: calender_todos_path, class: "validate_field", local:true) do |form|
+  .form-group
+    = form.label :day, '日付'
+    = form.date_field :day, class: 'form-control'
+
+  .form-group
+    = form.label :title, 'タイトル'
+    = form.text_field :title, class: 'form-control'
+
+  .form-group
+    = form.label :start_time, '開始'
+    = form.time_select :start_time, class: 'form-control'
+  .form-group
+    = form.label :end_time, '終了'
+    = form.time_select :end_time, class: 'form-control'
+
+  .form-group
+    = form.label :category, 'カテゴリ'
+    = form.text_field :category, class: 'form-control'
+
+  .form-group
+    = form.label :content, 'メモ'
+    = form.text_area :content, class: 'form-control', rows:5
+
+  .form-group
+    = form.label :image, '画像'
+    br
+    = form.file_field :image
+
+  = form.submit '登録する', class: 'btn btn-primary mr-4 mb-4'
+
+  = link_to "キャンセル", calender_path(current_user), class: 'btn btn-warning mb-4'
