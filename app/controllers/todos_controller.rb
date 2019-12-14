@@ -1,7 +1,7 @@
 class TodosController < ApplicationController
   def new
     @todo  = Todo.new
-    @todos = Todo.all
+    @todos = Todo.where(user_id: current_user.id)
   end
 
   def create
@@ -9,10 +9,16 @@ class TodosController < ApplicationController
     @todo.user_id = current_user.id
 
     if @todo.save
-      redirect_to new_calender_todo_path
-    else
-      redirect_to calender_path(current_user)
+      respond_to do |format|
+        format.html { redirect_to :new_calender_todo, notice: 'todos was successfully created!!!'}
+        format.json { render 'new', status: :created, location: @todo }
+        format.js
+      else
+        format.html { render :new }
+        format.json { render json: @todo.errors, status: :unprocessable_entity }
+      end
     end
+
   end
 
   def edit
