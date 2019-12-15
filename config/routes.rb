@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources  :users, only: [:update, :edit]
 
     resources  :calender, only: [:show] do
-      resources :todo
+      resources :todos
     end
 
     # 退会手続き画面
