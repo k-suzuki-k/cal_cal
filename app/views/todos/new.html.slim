@@ -46,5 +46,6 @@
   /Todo list
   .col-sm-6
     table#todo_list.table
-      - @todos.each do |todo|
-        = render partial: "todo_list", locals: { todo: todo }
+      tbody
+        - @todos.each do |todo|
+          = render partial: "todo_list", locals: { todo: todo }

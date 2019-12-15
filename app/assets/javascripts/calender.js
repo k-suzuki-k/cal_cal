@@ -21,10 +21,15 @@ $(document).ready(function(){
         dataType: 'json'
       })
         .done(function(data){
-          $('#todo_search_result').text(date.format())
-          $('#todo_search_result').find('li').remove();
+          //todoリストのタイトルをクリックした日付にする
+          $('.table_title').text(date.format('MM/DD'));
+          //検索結果を表示させる
+          $('#todo_search_result').find('td').remove();
+          $('#todo_search_result').find('td').remove();
           $(data).each(function(i, todo){
-            $('#todo_search_result').append('<li>' + todo.title + '</li>')
+            $('#todo_search_result').append('<tr>' + '</tr>')
+            $('#todo_search_result').append('<td>' + todo.title + '</td>')
+            $('#todo_search_result').append('<td>' + todo.content + '</td>')
           });
         });
     },
