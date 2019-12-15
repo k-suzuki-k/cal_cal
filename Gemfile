@@ -107,3 +107,7 @@ gem 'carrierwave'
 
 # 入力フォームのバリデーション
 gem 'jQuery-Validation-Engine-rails'
+
+# カレンダー
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
