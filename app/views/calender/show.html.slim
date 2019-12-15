@@ -7,3 +7,46 @@
     table#todo_lists.table
        h3.table_title list
        tbody#todo_search_result
+
+/Todo create form
+= form_with model: @todo, url: calender_todos_path(params[:id]), class: "validate_field", id: "new_todo" do |form|
+  .form-group
+    = form.label :day, '日付'
+    = form.date_field :day, value: Time.now.strftime("%Y-%m-%d"), class: 'form-control'
+
+  .row
+    .form-group.form-inline
+      .col-sm-6
+        = form.label :start_time, '開始時間'
+        = form.text_field :start_time, class: 'form-control timepicker ml-2 mr-2'
+      .col-sm-6
+        = form.label :end_time, '終了時間'
+        = form.text_field :end_time, class: 'form-control timepicker ml-2 mr-2'
+
+  .form-group
+    = form.label :title, 'タイトル'
+    = form.text_field :title, class: 'form-control'
+
+  .form-group.row.mt-4
+    .col-sm-2
+      = form.label :category, 'カテゴリ', {class: 'form-label'}
+    .col-sm-10.btn-group[data-toggle="buttons"]
+      label.btn.btn-outline-secondary.active[style="width:50%"]
+        = form.radio_button :category, :work
+        |  仕事
+      label.btn.btn-outline-secondary[style="width:50%"]
+        = form.radio_button :category, :prive
+        |  私用
+
+  .form-group
+    = form.label :content, 'メモ'
+    = form.text_area :content, class: 'form-control', rows:5
+
+  .form-group
+    = form.label :image, '画像'
+    br
+    = form.file_field :image
+
+  = form.submit '登録する', class: 'todo_submit btn btn-primary mr-4 mb-4'
+
+  = link_to "キャンセル", calender_path(current_user), class: 'btn btn-warning mb-4'

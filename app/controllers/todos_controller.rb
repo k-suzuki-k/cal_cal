@@ -12,7 +12,7 @@ class TodosController < ApplicationController
     if @todo.save
       respond_to do |format|
         format.html { redirect_to :new_calender_todo, notice: 'todos was successfully created!!!'}
-        format.json { render 'new', status: :created, location: @todo }
+        format.json { render 'calender#show', status: :created, location: @todo }
         format.js
       else
         format.html { render :new }
