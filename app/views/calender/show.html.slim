@@ -1,2 +1,16 @@
-h1 Calender#show
-p Find me in app/views/calender/show.html.slim
+.row
+  .col-sm-6
+
+    /fullCalendar.jsを呼び出す
+    .calendar_view
+      #calendar
+
+    /Todo作成フォーム id_hideで非表示にしている
+    .todos_new_form.is_hide
+      = render partial: "todos/new", locals: { todo: @todo }
+
+  /todoの一覧
+  .col-sm-6
+    table#todo_lists.table
+       h3.table_title
+       tbody#todo_search_result

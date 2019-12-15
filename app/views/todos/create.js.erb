@@ -1,1 +1,5 @@
-$("<%= escape_javascript(render partial: '/todos/todo_list', locals: { todo: @todo }) %>").appendTo("#todo_list");
+// todo listの非同期での追加
+$("<%= escape_javascript(render partial: '/todos/todo_list', locals: { todo: @todo }) %>").appendTo("#todo_search_result");
+
+// 日付以外の入力フォームのリセット
+$(".clear_field").val("");

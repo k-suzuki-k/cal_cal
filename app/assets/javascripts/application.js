@@ -13,7 +13,13 @@
 //= require jquery
 //= require jquery.validationEngine-en
 //= require jquery.validationEngine
+//
 //= require bootstrap
+//
+//= require moment
+//= require fullcalendar
+//= require fullcalendar/lang/ja
+//
 //= require jquery.turbolinks
 //= require rails-ujs
 //= require activestorage

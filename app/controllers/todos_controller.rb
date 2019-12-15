@@ -12,7 +12,7 @@ class TodosController < ApplicationController
     if @todo.save
       respond_to do |format|
         format.html { redirect_to :new_calender_todo, notice: 'todos was successfully created!!!'}
-        format.json { render 'new', status: :created, location: @todo }
+        format.json { render 'calender#show', status: :created, location: @todo }
         format.js
       else
         format.html { render :new }
@@ -20,6 +20,13 @@ class TodosController < ApplicationController
       end
     end
 
+  end
+
+  def search
+    @todos = Todo.where(user_id: current_user.id).where('day LIKE(?)', "%#{params[:keyword]}%")
+    respond_to do |format|
+      format.json { render 'calender#show', json: @todos }
+    end
   end
 
   def edit
