@@ -14,6 +14,8 @@ Rails.application.routes.draw do
       resources :todos
     end
 
+    get '/todos/search', to: 'todos#search'
+
     # 退会手続き画面
     get '/destroy_confirm', to: 'users#destroy_confirm', as: :user_destroy_confirm
 

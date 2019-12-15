@@ -22,6 +22,13 @@ class TodosController < ApplicationController
 
   end
 
+  def search
+    @todos = Todo.where(user_id: current_user.id).where('day LIKE(?)', "%#{params[:keyword]}%")
+    respond_to do |format|
+      format.json { render 'calender#show', json: @todos }
+    end
+  end
+
   def edit
   end
 
