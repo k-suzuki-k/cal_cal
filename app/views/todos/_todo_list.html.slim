@@ -1,8 +1,14 @@
 = todos.each do |todo|
   tr id="todo_#{todo.id}"
     td
-      = todo.start_time
+      - if todo.start_time.blank?
+          | -
+      - else
+        = todo.start_time.strftime("%H:%M")
     td
-      = todo.end_time
+      - if todo.end_time.blank?
+          | -
+      - else
+        = todo.end_time.strftime("%H:%M")
     td
       = todo.title

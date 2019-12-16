@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).on('turbolinks:load', function() {
   $('.timepicker').timepicki({
     show_meridian:false,
     min_hour_value:0,
