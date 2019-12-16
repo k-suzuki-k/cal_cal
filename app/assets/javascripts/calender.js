@@ -23,11 +23,14 @@ $(document).on('turbolinks:load', function() {
         .done(function(data){
           //todoリストのタイトルをクリックした日付にする
           $('.table_title').text(date.format('YYYY-MM-DD'));
+
           //検索結果を表示させる
+          $('#todo_search_result').find('tr').remove();
           $('#todo_search_result').find('td').remove();
-          $('#todo_search_result').find('td').remove();
+
           $(data).each(function(i, todo){
-            $('#todo_search_result').append('<tr>' + '</tr>')
+            console.log(todo);
+            $('#todo_search_result').append('<tr id=todo_' + todo.id + '></tr>')
             $('#todo_search_result').append('<td>' + todo.start_time + '</td>')
             $('#todo_search_result').append('<td>' + todo.end_time + '</td>')
             $('#todo_search_result').append('<td>' + todo.title + '</td>')
@@ -86,7 +89,7 @@ $(document).ready(function(){
           $('#todo_search_result').find('td').remove();
           $('#todo_search_result').find('td').remove();
           $(data).each(function(i, todo){
-              $('#todo_search_result').append('<tr>' + '</tr>')
+              $('#todo_search_result').append('<tr id=todo_' + todo.id + '></tr>')
               $('#todo_search_result').append('<td>' + todo.start_time + '</td>')
               $('#todo_search_result').append('<td>' + todo.end_time + '</td>')
               $('#todo_search_result').append('<td>' + todo.title + '</td>')
@@ -115,7 +118,7 @@ $(document).on('turbolinks:load', function() {
       $('#todo_search_result').find('td').remove();
       $('#todo_search_result').find('td').remove();
       $(data).each(function(i, todo){
-        $('#todo_search_result').append('<tr>' + '</tr>')
+        $('#todo_search_result').append('<tr id=todo_' + todo.id + '></tr>')
         $('#todo_search_result').append('<td>' + todo.start_time + '</td>')
         $('#todo_search_result').append('<td>' + todo.end_time + '</td>')
         $('#todo_search_result').append('<td>' + todo.title + '</td>')

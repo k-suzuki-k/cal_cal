@@ -1,5 +1,9 @@
+// todo listの初期化
+$('#todo_search_result').find('tr').remove();
+$('#todo_search_result').find('td').remove();
+
 // todo listの非同期での追加
-$("<%= escape_javascript(render partial: '/todos/todo_list', locals: { todo: @todo }) %>").appendTo("#todo_search_result");
+$("<%= escape_javascript(render partial: '/todos/todo_list', locals: { todos: @todos }) %>").appendTo("#todo_search_result");
 
 // 日付以外の入力フォームのリセット
 $(".clear_field").val("");

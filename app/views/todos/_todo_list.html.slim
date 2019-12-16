@@ -1,7 +1,8 @@
-tr
-  td
-    = todo.start_time
-  td
-    = todo.end_time
-  td
-    = todo.title
+= todos.each do |todo|
+  tr id="todo_#{todo.id}"
+    td
+      = todo.start_time
+    td
+      = todo.end_time
+    td
+      = todo.title

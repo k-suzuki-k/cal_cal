@@ -8,11 +8,16 @@ class TodosController < ApplicationController
   def create
     @todo = Todo.new(todo_params)
     @todo.user_id = current_user.id
+    search_day = todo_params[:day]
 
     if @todo.save
+
+      #todo_listの抽出
+      @todos = Todo.where(user_id: current_user.id).where(day: search_day)
+
       respond_to do |format|
         format.html { redirect_to :new_calender_todo, notice: 'todos was successfully created!!!'}
-        format.json { render 'calender#show', status: :created, location: @todo }
+        format.json { render 'calender#show', status: :created, location: @todos }
         format.js
       else
         format.html { render :new }
