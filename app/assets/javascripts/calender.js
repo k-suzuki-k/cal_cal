@@ -45,14 +45,13 @@ $(document).on('turbolinks:load', function() {
             var end_time = '-';
 
             }
-            $('#todo_search_result').append('<tr id=todo_' + todo.id + '></tr>')
-            $('#todo_search_result').append('<td>' + start_time + '</td>')
-            $('#todo_search_result').append('<td>' + end_time + '</td>')
-            $('#todo_search_result').append('<td>' + todo.title + '</td>')
-          });
+          $('#todo_search_result').append('<tr id=todo_' + todo.id + ' class=todo_row >' +
+            '<td>' + start_time + '</td>' +
+            '<td>' + end_time + '</td>' +
+            '<td>' + todo.title + '</td>' + '</tr>')
+            });
         });
     },
-
   });
 });
 $(document).on('turbolinks:before-cache', function() {
@@ -64,8 +63,10 @@ $(document).on('turbolinks:before-cache', function() {
 $(document).ready(function(){
   $(document).on("dblclick", ".fc-day", function(){
 
-    $('.todos_new_form').toggleClass('is_hide');
-    $('.calendar_view').toggleClass('is_hide');
+    $('.todos_new_form').removeClass('is_hide');
+    $('.calendar_view').addClass('is_hide');
+    $('.todo_edit_view').addClass('is_hide');
+    $('.todo_show_view').addClass('is_hide');
 
     var dblclick_day = $(this).data('date');
     $('#todo_day').val(dblclick_day);
@@ -76,11 +77,12 @@ $(document).ready(function(){
 //入力フォームのボタンをクリックするとカレンダーへ戻る
 $(document).ready(function(){
   $(document).on("click", ".to_calender_btn", function(){
-    $('.todos_new_form').toggleClass('is_hide');
-    $('.calendar_view').toggleClass('is_hide');
+    $('.calendar_view').removeClass('is_hide');
+    $('.todos_new_form').addClass('is_hide');
+    $('.todo_edit_view').addClass('is_hide');
+    $('.todo_show_view').addClass('is_hide');
   });
 });
-
 
 //入力フォームの日付を変えると非同期で検索する
 $(document).on('turbolinks:load', function() {
@@ -101,7 +103,7 @@ $(document).on('turbolinks:load', function() {
         //todoリストのタイトルをクリックした日付にする
         $('.table_title').text(change_day);
         //検索結果を表示させる
-        $('#todo_search_result').find('td').remove();
+        $('#todo_search_result').find('tr').remove();
         $('#todo_search_result').find('td').remove();
 
         //todoリストの作成
@@ -120,10 +122,10 @@ $(document).on('turbolinks:load', function() {
           } else {
             var end_time = '-';
           }
-          $('#todo_search_result').append('<tr id=todo_' + todo.id + '></tr>')
-          $('#todo_search_result').append('<td>' + start_time + '</td>')
-          $('#todo_search_result').append('<td>' + end_time + '</td>')
-          $('#todo_search_result').append('<td>' + todo.title + '</td>')
+        $('#todo_search_result').append('<tr id=todo_' + todo.id + ' class=todo_row >' +
+          '<td>' + start_time + '</td>' +
+          '<td>' + end_time + '</td>' +
+          '<td>' + todo.title + '</td>' + '</tr>')
         });
       });
   });
@@ -165,10 +167,10 @@ $(document).on('turbolinks:load', function() {
         } else {
           var end_time = '-';
         }
-          $('#todo_search_result').append('<tr id=todo_' + todo.id + '></tr>')
-          $('#todo_search_result').append('<td>' + start_time + '</td>')
-          $('#todo_search_result').append('<td>' + end_time + '</td>')
-          $('#todo_search_result').append('<td>' + todo.title + '</td>')
+        $('#todo_search_result').append('<tr id=todo_' + todo.id + ' class=todo_row >' +
+          '<td>' + start_time + '</td>' +
+          '<td>' + end_time + '</td>' +
+          '<td>' + todo.title + '</td>' + '</tr>')
         });
       });
     });
