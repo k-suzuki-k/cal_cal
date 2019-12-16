@@ -28,8 +28,9 @@ $(document).on('turbolinks:load', function() {
           $('#todo_search_result').find('td').remove();
           $(data).each(function(i, todo){
             $('#todo_search_result').append('<tr>' + '</tr>')
+            $('#todo_search_result').append('<td>' + todo.start_time + '</td>')
+            $('#todo_search_result').append('<td>' + todo.end_time + '</td>')
             $('#todo_search_result').append('<td>' + todo.title + '</td>')
-            $('#todo_search_result').append('<td>' + todo.content + '</td>')
           });
         });
     },
@@ -70,22 +71,6 @@ $(document).ready(function(){
 
     var change_day = event.currentTarget.value;
 
-    //var change_day = document.getElementById("todo_day").value;
-
-    //debugger;
-
-    //var input_day = event.currentTarget.value;
-
-    //var create_ymd = input_day.replace(/-/g, '/');
-    //var create_time = "02:00"
-
-    //var strDate = create_ymd + ' ' + create_time + ':00';
-    //var change_day = new Date(strDate);
-
-    //console.log(strDate);
-    //console.log(change_day);
-    //console.log(typeof(change_day));
-
       $.ajax({
         url: '/todos/search',
         type: 'GET',
@@ -101,9 +86,10 @@ $(document).ready(function(){
           $('#todo_search_result').find('td').remove();
           $('#todo_search_result').find('td').remove();
           $(data).each(function(i, todo){
-            $('#todo_search_result').append('<tr>' + '</tr>')
-            $('#todo_search_result').append('<td>' + todo.title + '</td>')
-            $('#todo_search_result').append('<td>' + todo.content + '</td>')
+              $('#todo_search_result').append('<tr>' + '</tr>')
+              $('#todo_search_result').append('<td>' + todo.start_time + '</td>')
+              $('#todo_search_result').append('<td>' + todo.end_time + '</td>')
+              $('#todo_search_result').append('<td>' + todo.title + '</td>')
           });
         });
   });
@@ -130,8 +116,9 @@ $(document).on('turbolinks:load', function() {
       $('#todo_search_result').find('td').remove();
       $(data).each(function(i, todo){
         $('#todo_search_result').append('<tr>' + '</tr>')
+        $('#todo_search_result').append('<td>' + todo.start_time + '</td>')
+        $('#todo_search_result').append('<td>' + todo.end_time + '</td>')
         $('#todo_search_result').append('<td>' + todo.title + '</td>')
-        $('#todo_search_result').append('<td>' + todo.content + '</td>')
       });
     });
 });
