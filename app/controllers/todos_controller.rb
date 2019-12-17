@@ -34,18 +34,32 @@ class TodosController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def show
+    @todo_show = Todo.where(user_id: params[:calender_id]).where(id: params[:keyword])
   end
 
-  def index
+  def update
+    @todo = Todo.find(params[:calender_id])
+    @search_day = todo_params[:day] #todoリストのタイトルを変えるためインスタンス変数
+
+    if @todo.update(todo_params)
+
+      #todo_listの抽出
+      @todos = Todo.where(user_id: current_user.id).where(day: @search_day)
+
+      respond_to do |format|
+        format.json { render 'calender#show', status: :created, location: @todos }
+        format.js
+      end
+    end
+  end
+
+  def destroy
   end
 
   private
   def todo_params
-    params.require(:todo).permit(:user_id, :day, :title, :start_time, :end_time, :category, :content, :image)
+    params.require(:todo).permit(:id, :user_id, :day, :title, :start_time, :end_time, :category, :content, :image)
   end
 
 end

@@ -1,0 +1,11 @@
+// 詳細ページの表示
+$('.todo_show_view').removeClass('is_hide');
+$('.todos_new_form').addClass('is_hide');
+$('.calendar_view').addClass('is_hide');
+$('.todo_edit_view').addClass('is_hide');
+
+// 前の詳細ページの内容を削除する
+$('.todo_show_title').remove();
+$('.todo_show_content').remove();
+
+$("<%= escape_javascript(render partial: '/todos/show', locals: { todo_show: @todo_show }) %>").appendTo(".todo_show_view");

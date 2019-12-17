@@ -1,3 +1,5 @@
+h2.todo_new_title 新規作成
+
 = form_with model: @todo, url: calender_todos_path(params[:id]), class: "validate_field", id: "new_todo" do |form|
   .form-group
     = form.label :day, '日付'
@@ -19,8 +21,8 @@
   .form-group.row.mt-4
     .col-sm-2
       = form.label :category, 'カテゴリ', {class: 'form-label'}
-    .col-sm-10.btn-group[data-toggle="buttons"]
-      label.btn.btn-outline-secondary.active[style="width:50%"]
+    .col-sm-10.btn-group
+      label.btn.btn-outline-secondary[style="width:50%"]
         = form.radio_button :category, :work
         |  仕事
       label.btn.btn-outline-secondary[style="width:50%"]
@@ -30,11 +32,6 @@
   .form-group
     = form.label :content, 'メモ'
     = form.text_area :content, class: 'form-control clear_field', rows:2
-
-  .form-group
-    = form.label :image, '画像'
-    br
-    = form.file_field :image
 
   = form.submit '登録する', class: 'todo_submit btn btn-primary mr-4 mb-4'
 
