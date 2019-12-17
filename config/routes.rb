@@ -14,6 +14,9 @@ Rails.application.routes.draw do
       resources :todos
     end
 
+    resources  :posts
+
+    # todo_list を作成するため
     get '/todos/search', to: 'todos#search'
 
     # 退会手続き画面
