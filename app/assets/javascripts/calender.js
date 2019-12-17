@@ -65,7 +65,6 @@ $(document).ready(function(){
 
     $('.todos_new_form').removeClass('is_hide');
     $('.calendar_view').addClass('is_hide');
-    $('.todo_edit_view').addClass('is_hide');
     $('.todo_show_view').addClass('is_hide');
 
     var dblclick_day = $(this).data('date');
@@ -79,7 +78,6 @@ $(document).ready(function(){
   $(document).on("click", ".to_calender_btn", function(){
     $('.calendar_view').removeClass('is_hide');
     $('.todos_new_form').addClass('is_hide');
-    $('.todo_edit_view').addClass('is_hide');
     $('.todo_show_view').addClass('is_hide');
   });
 });

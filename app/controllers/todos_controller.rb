@@ -48,13 +48,23 @@ class TodosController < ApplicationController
       @todos = Todo.where(user_id: current_user.id).where(day: @search_day)
 
       respond_to do |format|
-        format.json { render 'calender#show', status: :created, location: @todos }
         format.js
       end
     end
   end
 
   def destroy
+    @todo = Todo.find(params[:calender_id])
+    search_day = @todo.day
+
+    if @todo.destroy
+      #todo_listの抽出
+      @todos = Todo.where(user_id: current_user.id).where(day: search_day)
+
+      respond_to do |format|
+        format.js
+      end
+    end
   end
 
   private
