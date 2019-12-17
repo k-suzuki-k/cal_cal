@@ -1,0 +1,25 @@
+.row
+  .col-sm-6
+    h2.post_new_title 投稿ページ
+    = form_with model: @post, url: posts_path(current_user.id), class: "validate_field", id: "new_post" do |form|
+
+      .form-group
+        = form.label :day, '日付'
+        = form.date_field :day, value: Time.now.strftime("%Y-%m-%d"), class: 'form-control', id: 'todo_day';
+
+      .form-group
+        = form.label :title, 'タイトル'
+        = form.text_field :title, class: 'form-control'
+
+      .form-group
+        = form.label :content, 'コメント'
+        = form.text_area :content, class: 'form-control', rows:2
+
+      = form.submit '投稿する', class: 'post_submit btn btn-primary mr-4 mb-4'
+
+    = link_to "キャンセル", posts_path, class: 'btn btn-warning'
+
+  .col-sm-6
+    table#todo_lists.table
+      h3.table_title
+      tbody#todo_search_result

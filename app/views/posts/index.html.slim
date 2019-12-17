@@ -1,2 +1,31 @@
-h1 Posts#index
-p Find me in app/views/posts/index.html.slim
+.row
+  .col-sm-6.post_profile_box
+    .row
+      .col-sm-6
+        /プロフィール画像
+        .post_profile_content
+          - if current_user.image.blank?
+            = image_tag "/assets/noimage.jpg", :size => '100x100', class: 'img-thumbnail rounded'
+          - else
+            = image_tag current_user.image.to_s, :size => '100x100', class: 'img-thumbnail rounded'
+
+        /ユーザー名
+        .post_profile_content
+          -if current_user.name.blank?
+            | no name
+          -else
+            = current_user.name
+
+      /プロフィール文
+      .col-sm-6
+        .post_profile_content
+          | content
+
+  .col-sm-6.to_new_post
+    .row
+      /投稿する
+      = link_to "投稿ページへ", new_post_path(current_user.id), class: 'btn btn-primary'
+
+.container
+  .post_todo_list
+    = render partial: "posts/post_list", locals: { todos: @todos }
