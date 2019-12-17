@@ -13,7 +13,7 @@ class TodosController < ApplicationController
     if @todo.save
 
       #todo_listの抽出
-      @todos = Todo.where(user_id: current_user.id).where(day: search_day)
+      @todos = Todo.where(user_id: current_user.id).where(day: search_day).order(:start_time).order(:end_time)
 
       respond_to do |format|
         format.html { redirect_to :new_calender_todo, notice: 'todos was successfully created!!!'}
@@ -28,7 +28,7 @@ class TodosController < ApplicationController
   end
 
   def search
-    @todos = Todo.where(user_id: current_user.id).where('day LIKE(?)', "%#{params[:keyword]}%")
+    @todos = Todo.where(user_id: current_user.id).where('day LIKE(?)', "%#{params[:keyword]}%").order(:start_time).order(:end_time)
     respond_to do |format|
       format.json { render 'calender#show', json: @todos }
     end
@@ -59,7 +59,7 @@ class TodosController < ApplicationController
 
     if @todo.destroy
       #todo_listの抽出
-      @todos = Todo.where(user_id: current_user.id).where(day: search_day)
+      @todos = Todo.where(user_id: current_user.id).where(day: search_day).order(:start_time).order(:end_time)
 
       respond_to do |format|
         format.js
