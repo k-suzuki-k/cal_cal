@@ -1,2 +1,52 @@
-h1 Todos#show
-p Find me in app/views/todos/show.html.slim
+h2.todo_show_title 詳細
+
+.todo_show_content
+ = form_with model: todo_show[0], url: calender_todo_path(todo_show[0].id), class: "validate_field", id: "show_todo" do |form|
+   .form-group
+     = form.label :day, '日付'
+     = form.date_field :day, value: todo_show[0].day , class: 'form-control'
+
+   .row
+     .form-group.form-inline
+       .col-sm-6
+         = form.label :start_time, '開始時間'
+
+          - if todo_show[0].start_time.nil?
+            = form.text_field :start_time, value: "", class: 'form-control clear_field timepicker ml-2 mr-2'
+          - else
+            = form.text_field :start_time, value: todo_show[0].start_time.strftime("%H:%M"), class: 'form-control clear_field timepicker ml-2 mr-2'
+
+       .col-sm-6
+         = form.label :end_time, '終了時間'
+
+          - if todo_show[0].end_time.nil?
+            = form.text_field :end_time, value: "", class: 'form-control clear_field timepicker ml-2 mr-2'
+          - else
+            = form.text_field :end_time, value: todo_show[0].end_time.strftime("%H:%M"), class: 'form-control clear_field timepicker ml-2 mr-2'
+   .form-group
+
+     = form.label :title, 'タイトル'
+     = form.text_field :title, class: 'form-control clear_field'
+
+   .form-group.row.mt-4
+     .col-sm-2
+       = form.label :category, 'カテゴリ', {class: 'form-label'}
+     .col-sm-10.btn-group
+       label.btn.btn-outline-secondary[style="width:50%"]
+         = form.radio_button :category, :work
+         |  仕事
+       label.btn.btn-outline-secondary[style="width:50%"]
+         = form.radio_button :category, :prive
+         |  私用
+
+   .form-group
+     = form.label :content, 'メモ'
+     = form.text_area :content, class: 'form-control clear_field', rows:2
+
+   = form.submit '更新する', class: 'todo_submit btn btn-primary mr-4 mb-4'
+
+   .btn.btn-warning.mb-4.mr-4.to_calender_btn
+     | カレンダーへ
+
+   .btn.btn-danger.mb-4
+     | 削除する

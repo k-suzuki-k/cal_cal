@@ -1,0 +1,9 @@
+// todo listの初期化
+$('#todo_search_result').find('tr').remove();
+$('#todo_search_result').find('td').remove();
+
+//todoリストのタイトルをアップデートした日にする
+$('.table_title').text("<%= @search_day %>")
+
+// todo listの非同期での追加
+$("<%= escape_javascript(render partial: '/todos/todo_list', locals: { todos: @todos }) %>").appendTo("#todo_search_result");
