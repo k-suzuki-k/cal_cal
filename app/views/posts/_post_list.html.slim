@@ -1,0 +1,15 @@
+table.table.mt-3
+  thead.thead-light
+    tr
+      th 日付
+      th タイトル
+      th コメント
+  tbody
+    - posts.each do |post|
+      tr.post_row id="post_#{post.id}"
+        td
+          = post.day
+        td
+          = post.title
+        td
+          = post.content
