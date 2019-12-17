@@ -48,5 +48,4 @@ h2.todo_show_title 詳細
    .btn.btn-warning.mb-4.mr-4.to_calender_btn
      | カレンダーへ
 
-   .btn.btn-danger.mb-4
-     | 削除する
+   = link_to "削除する", calender_todo_path(todo_show[0].id), class: 'btn btn-danger mb-4', method: :delete, remote: true

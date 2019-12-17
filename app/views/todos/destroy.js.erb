@@ -1,0 +1,11 @@
+// 詳細ページの表示
+$('.calendar_view').removeClass('is_hide');
+$('.todos_new_form').addClass('is_hide');
+$('.todo_show_view').addClass('is_hide');
+
+// todo listの初期化
+$('#todo_search_result').find('tr').remove();
+$('#todo_search_result').find('td').remove();
+
+// todo list
+$("<%= escape_javascript(render partial: '/todos/todo_list', locals: { todos: @todos }) %>").appendTo("#todo_search_result");
