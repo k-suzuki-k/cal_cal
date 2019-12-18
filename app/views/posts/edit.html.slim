@@ -15,9 +15,9 @@
         = form.label :content, 'コメント'
         = form.text_area :content, class: 'form-control', rows:2
 
-      = form.submit '編集する', class: 'post_submit btn btn-primary mr-4 mb-4'
-
-    = link_to "キャンセル", posts_path, class: 'btn btn-warning'
+      .btn-group
+        = form.submit '編集する', class: 'post_submit btn btn-primary mr-4'
+        = link_to "キャンセル", posts_path(current_user.id), class: 'btn btn-warning'
 
   .col-sm-6
     table#todo_lists.table
