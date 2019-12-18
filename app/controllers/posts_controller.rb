@@ -47,6 +47,15 @@ class PostsController < ApplicationController
     end
   end
 
+  def search_list
+    # search_list.htmlを表示させる
+  end
+
+  # search_js.erbをレスポンスする
+  def search
+    @posts = Post.post_search(params)
+  end
+
   private
   def post_params
     params.require(:post).permit(:user_id, :day, :title, :content)

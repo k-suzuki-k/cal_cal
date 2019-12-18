@@ -1,0 +1,26 @@
+.container
+  h2 検索ページ
+
+  /検索フォーム
+  #post_search_form.form-row
+    .form-group.col-sm-3
+      span 日付
+      br
+      input.post_search_input.post_search_day[type="date" name="keyword"]
+    .form-group.col-sm-3
+      span タイトル
+      input.post_search_input.post_search_title[type="text" name="keyword"]
+    .form-group.col-sm-3
+      span コメント
+      input.post_search_input.post_search_content[type="text" name="keyword"]
+
+
+/検索結果の表示 search.js.erbが結果をappendする
+.container
+    #post_search_result
+      table.table.mt-3
+        thead.thead-light
+          tr
+            th 日付
+            th タイトル
+            th コメント

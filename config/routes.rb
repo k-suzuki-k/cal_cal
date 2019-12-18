@@ -14,6 +14,11 @@ Rails.application.routes.draw do
       resources :todos
     end
 
+    # 検索画面の表示
+    get '/posts/search_list', to: 'posts#search_list'
+    # 検索結果を非同期で出力させる
+    get '/posts/search', to: 'posts#search'
+
     resources  :posts
 
     # todo_list を作成するため

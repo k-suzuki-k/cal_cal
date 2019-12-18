@@ -8,8 +8,7 @@ nav.navbar.navbar-light.navbar-expand-md.nav-color
 
       ul.navbar-nav.ml-auto
         li.nav-item
-          a.text-primary.nav-link[href="#"]
-            = fa_icon "search", text: "検索"
+          = link_to "検索", posts_search_list_path, class: "fa fa-search mr-2"
 
         /サイドメニューの表示
         button.nav-item.drawer-toggle.drawer-hamburger[type="button"]

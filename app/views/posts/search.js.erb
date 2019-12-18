@@ -1,0 +1,5 @@
+// post listの初期化
+$('#post_search_result').find('table').remove();
+
+// post listの非同期での追加
+$("<%= escape_javascript(render partial: '/posts/post_list', locals: { posts: @posts }) %>").appendTo("#post_search_result");
