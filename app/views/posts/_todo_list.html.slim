@@ -1,0 +1,17 @@
+table#todo_lists.table
+  h3 = post.day
+  tbody
+    - todos.each do |todo|
+      tr.todo_row id="todo_#{todo.id}"
+        td
+          - if todo.start_time.blank?
+              | -
+          - else
+            = todo.start_time.strftime("%H:%M")
+        td
+          - if todo.end_time.blank?
+              | -
+          - else
+            = todo.end_time.strftime("%H:%M")
+        td
+          = todo.title

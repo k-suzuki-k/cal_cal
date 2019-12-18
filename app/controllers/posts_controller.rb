@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @todos = Todo.where(user_id: current_user.id).where(day: @post.day)
   end
 
   def new

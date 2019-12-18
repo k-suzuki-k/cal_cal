@@ -1,2 +1,24 @@
-h1 Posts#show
-p Find me in app/views/posts/show.html.slim
+.row
+  .col-sm-6
+    h2.post_show_title 投稿ページ
+    .post_show_form
+      label 日付
+      p.post_day.bg-white.border = @post.day
+
+    .post_show_form
+      label タイトル
+      p.post_title.bg-white.border = @post.title
+
+    .post_show_form
+      label コメント
+      p.post_content.bg-white.border = @post.content
+
+    .btn-group.mt-3
+      = link_to "編集する", edit_post_path(@post), class: 'btn btn-primary'
+
+      = link_to "一覧に戻る", posts_path, class: 'btn btn-warning mr-2 ml-2'
+
+      = link_to "削除する", post_path(@post), class: 'btn btn-danger', method: :delete, remote: true
+
+  .col-sm-6
+    = render partial: "posts/todo_list", locals: { todos: @todos, post: @post }
