@@ -1,2 +1,6 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+//post一覧をクリックすると詳細が表示される
+$(document).ready(function(){
+  $(document).on("click", ".post_row", function(){
+    location.href = $(this).data('href');
+  });
+});

@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
   # relation
   has_many :todos, dependent: :destroy
+  has_many :posts, dependent: :destroy
 
   # 画像アップロードの設定
   mount_uploader :image, ImagesUploader

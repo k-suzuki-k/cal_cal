@@ -24,7 +24,7 @@ nav.drawer-nav
 
     li.drawer-menu-item
       a[href="#"]
-        | 投稿一覧
+        = link_to "投稿一覧", posts_path(current_user)
 
     li.drawer-menu-item
       = link_to "ログアウト", destroy_user_session_path, method: "delete"
