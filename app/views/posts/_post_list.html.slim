@@ -6,7 +6,7 @@ table.table.mt-3
       th コメント
   tbody
     - posts.each do |post|
-      tr.post_row id="post_#{post.id}"
+      tr.post_row data-href="/posts/#{post.id}"
         td
           = post.day
         td
