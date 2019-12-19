@@ -5,26 +5,30 @@
         .col-sm-6
           /プロフィール画像
           .post_profile_content
-            - if current_user.image.blank?
+            - if @user.image.blank?
               = image_tag "/assets/noimage.jpg", :size => '150x150', class: 'img-thumbnail rounded'
             - else
-              = image_tag current_user.image.to_s, :size => '150x150', class: 'img-thumbnail rounded'
+              = image_tag @user.image.to_s, :size => '150x150', class: 'img-thumbnail rounded'
 
           /ユーザー名
           h5.post_profile_content.text-center.mt-2
-            -if current_user.name.blank?
+            -if @user.name.blank?
               | no name
             -else
-              = current_user.name
+              = @user.name
 
         /プロフィール文
         .col-sm-6
           .post_profile_content
-            | content
+            -if @user.profile.blank?
+              | no_message
+            -else
+              = @user.profile
 
-    .col-sm-8.to_new_post.align-self-center
-      .row.justify-content-center
-        = link_to "投稿ページへ", new_post_path(current_user.id), class: 'btn btn-primary'
+    - if @user == current_user
+      .col-sm-8.to_new_post.align-self-center
+        .row.justify-content-center
+          = link_to "投稿ページへ", new_post_path(current_user.id), class: 'btn btn-primary'
 
 .container
   .post_todo_list

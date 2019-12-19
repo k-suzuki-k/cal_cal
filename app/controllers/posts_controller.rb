@@ -1,11 +1,12 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.where(user_id: current_user.id).order(day: "DESC")
+    @posts = Post.where(user_id: params[:format]).order(day: "DESC")
+    @user = User.find(params[:format])
   end
 
   def show
     @post = Post.find(params[:id])
-    @todos = Todo.where(user_id: current_user.id).where(day: @post.day)
+    @todos = Todo.where(user_id: @post.user_id).where(day: @post.day)
   end
 
   def new
@@ -17,7 +18,7 @@ class PostsController < ApplicationController
     post.user_id = current_user.id
 
     if post.save
-      redirect_to post_path(post)
+      redirect_to post_path(post.id)
     else
       render :new
     end
