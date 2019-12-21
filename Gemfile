@@ -58,6 +58,8 @@ group :development, :test do
   gem "test-queue"         # テストを並列で実行する
   gem 'faker'              # 本物っぽいテストデータの作成
   gem 'faker-japanese'     # 本物っぽいテストデータの作成（日本語対応）
+  gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 group :development do

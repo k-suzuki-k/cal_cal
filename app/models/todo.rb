@@ -5,6 +5,9 @@ class Todo < ApplicationRecord
   # image upload
   mount_uploader :image, ImagesUploader
 
-  # category setting
+  # categoryの設定
   enum category: { work: 0, prive: 1 }
+
+  # 日付は空でないこと
+  validates :day, presence: true
 end
