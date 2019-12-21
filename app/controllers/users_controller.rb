@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+
+  # ログインユーザのみ自身の情報を編集、更新できる
+  include CommonActions
+  before_action :correct_user, only: [:edit, :update]
+
   def edit
     @user = User.find(params[:id])
   end
