@@ -3,10 +3,9 @@ module CommonActions
 
   # ログインユーザのみ自身の情報を編集、更新できる
   def correct_user
-    @user = User.find(params[:id])
-    @user_chk = current_user
-    unless @user == @user_chk
-      redirect_to calender_path(@user_chk)
+    user = User.find(params[:id])
+    unless user == current_user
+      redirect_to calender_path(current_user)
     end
   end
 end
