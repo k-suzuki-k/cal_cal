@@ -16,6 +16,5 @@ FactoryBot.define do
     trait :not_enough_password do
       password { '12345' }
     end
-
   end
 end

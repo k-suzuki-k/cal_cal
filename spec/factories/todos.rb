@@ -1,12 +1,20 @@
 FactoryBot.define do
   factory :todo do
-    user_id { 1 }
-    day { "2019-12-14" }
-    title { "MyString" }
-    start_time { "2019-12-14 13:53:43" }
-    end_time { "2019-12-14 13:53:43" }
-    category { 1 }
-    content { "MyText" }
-    image { "MyString" }
+    day { "2019-12-21" }
+    start_time { "13:00" }
+    end_time { "14:00" }
+    association :user
+
+    trait :not_date_format do
+      day { "no date" }
+    end
+
+    trait :no_date do
+      day { "" }
+    end
+
+    trait :not_time_format do
+      start_time { "not time" }
+    end
   end
 end
