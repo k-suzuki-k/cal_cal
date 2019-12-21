@@ -2,6 +2,9 @@ class Post < ApplicationRecord
   # relation
   belongs_to :user
 
+  # 日付は空でないこと
+  validates :day, presence: true
+
   # postの検索
   scope :post_search, -> (search_params) do
      day_search(search_params[:day])
