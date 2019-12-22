@@ -1,3 +1,13 @@
 - if flash[:error]
   .alert.alert-danger
     = flash[:error]
+    button.close[type="button" data-dismiss="alert" aria-label="閉じる"]
+      span[aria-hidden="true"]
+        | ×
+
+- if flash[:notise]
+  .alert.alert-success.alert-dismissible.fade.show
+    = flash[:notise]
+    button.close[type="button" data-dismiss="alert" aria-label="閉じる"]
+      span[aria-hidden="true"]
+        | ×
