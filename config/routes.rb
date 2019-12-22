@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   get '/welcome', to: 'welcome#index'
 
   # デバイスの設定
-  devise_for :users
+  devise_for :users, :controllers => {
+     :registrations => 'users/registrations',
+     :sessions => 'users/sessions'
+  }
 
   authenticated :user do # ログインしないとアクセスできない設定
 
