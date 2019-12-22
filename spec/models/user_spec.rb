@@ -29,5 +29,32 @@ RSpec.describe User, type: :model do
         expect(build(:user)).not_to be_valid
       end
     end
+
+    describe "ユーザ情報の編集" do
+      describe "ユーザ名" do
+        context "20字" do
+          it "有効な状態" do
+            expect(build(:user, :max_name)).to be_valid
+          end
+        end
+        context "21字" do
+          it "無効な状態" do
+            expect(build(:user, :over_name)).not_to be_valid
+          end
+        end
+      end
+      describe "自己紹介" do
+        context "100字" do
+          it "有効な状態" do
+            expect(build(:user, :max_profile)).to be_valid
+          end
+        end
+        context "101字" do
+          it "無効な状態" do
+            expect(build(:user, :over_profile)).not_to be_valid
+          end
+        end
+      end
+    end
   end
 end
