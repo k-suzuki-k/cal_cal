@@ -1,4 +1,4 @@
-.row
+.row#todo_first_check
   .col-sm-6
     h2.post_new_title 投稿ページ
     = form_with model: @post, url: posts_path(current_user.id), class: "validate_field", id: "new_post" do |form|

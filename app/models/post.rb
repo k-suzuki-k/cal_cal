@@ -11,7 +11,6 @@ class Post < ApplicationRecord
       .title_search(search_params[:title])
       .content_search(search_params[:content])
    end
-
   scope :day_search, -> (day)   {
      where(['day = ?', "#{day}"]) if day.present?
   }

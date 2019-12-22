@@ -1,6 +1,6 @@
+// fullCalendarの設定
 $(document).on('turbolinks:load', function() {
   $("#calendar").fullCalendar({
-    //カレンダーの設定
     height: 510,
     titleFormat: 'YYYY-MM',
     header: {
@@ -129,46 +129,51 @@ $(document).on('turbolinks:load', function() {
   });
 });
 
-// 初回のデータ取得
+// calender#showに移動したときに 本日分のtodoを検索して出力する
 $(document).on('turbolinks:load', function() {
 
-  var today_date = moment();
+  var check = document.getElementById('todo_first_check');
 
-  $.ajax({
-    url: '/todos/search',
-    type: 'GET',
-    data: ('keyword=' + today_date.format('YYYY-MM-DD')),
-    processData: false,
-    contentType: false,
-    dataType: 'json'
-  })
-    .done(function(data){
-      //todoリストのタイトルをクリックした日付にする
-      $('.table_title').text(today_date.format('YYYY-MM-DD'));
-      //検索結果を表示させる
-      $('#todo_search_result').find('td').remove();
-      $('#todo_search_result').find('td').remove();
+  if (check) {
+    var today_date = moment();
 
-      //todoリストの作成
-      $(data).each(function(i, todo){
-        //開始時間のフォーマット
-        if (todo.start_time != null) {
-          var todo_day_for_start_time = new Date(todo.start_time);
-          var start_time = todo_day_for_start_time.toTimeString().substr(0,5);
-        } else {
-          var start_time = '-';
-        }
-        //終了時間のフォーマット
-        if (todo.end_time != null) {
-          var todo_day_for_end_time = new Date(todo.end_time);
-          var end_time = todo_day_for_end_time.toTimeString().substr(0,5);
-        } else {
-          var end_time = '-';
-        }
-        $('#todo_search_result').append('<tr id=todo_' + todo.id + ' class=todo_row >' +
-          '<td>' + start_time + '</td>' +
-          '<td>' + end_time + '</td>' +
-          '<td>' + todo.title + '</td>' + '</tr>')
+    $.ajax({
+      url: '/todos/search',
+      type: 'GET',
+      data: ('keyword=' + today_date.format('YYYY-MM-DD')),
+      processData: false,
+      contentType: false,
+      dataType: 'json'
+    })
+      .done(function(data){
+        //todoリストのタイトルをクリックした日付にする
+        $('.table_title').text(today_date.format('YYYY-MM-DD'));
+        //検索結果を表示させる
+        $('#todo_search_result').find('td').remove();
+        $('#todo_search_result').find('td').remove();
+
+        //todoリストの作成
+        $(data).each(function(i, todo){
+          //開始時間のフォーマット
+          if (todo.start_time != null) {
+            var todo_day_for_start_time = new Date(todo.start_time);
+            var start_time = todo_day_for_start_time.toTimeString().substr(0,5);
+          } else {
+            var start_time = '-';
+          }
+          //終了時間のフォーマット
+          if (todo.end_time != null) {
+            var todo_day_for_end_time = new Date(todo.end_time);
+            var end_time = todo_day_for_end_time.toTimeString().substr(0,5);
+          } else {
+            var end_time = '-';
+          }
+          $('#todo_search_result').append('<tr id=todo_' + todo.id + ' class=todo_row >' +
+            '<td>' + start_time + '</td>' +
+            '<td>' + end_time + '</td>' +
+            '<td>' + todo.title + '</td>' + '</tr>')
         });
       });
-    });
+  } else {
+  };
+});
