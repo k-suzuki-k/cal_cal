@@ -1,5 +1,5 @@
 //ログイン、登録のタブ切り替え
-jQuery(function($){
+$(document).on('turbolinks:load', function() {
   $('.wv-tabs-header_tab').click(function(){
     $('.active').removeClass('active');
     $(this).addClass('active');
@@ -10,12 +10,12 @@ jQuery(function($){
 });
 
 //入力フォームのバリデーション
-$(document).ready(function(){
+$(document).on('turbolinks:load', function() {
   $(".validate_field").validationEngine();
 });
 
 //メールアドレスの入力補助
-$(document).ready(function(){
+$(document).on('turbolinks:load', function() {
     $(".email_auto").emailautocomplete({
           domains: ["example.com"]
         });

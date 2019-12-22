@@ -9,6 +9,8 @@ Rails.application.routes.draw do
      :sessions => 'users/sessions'
   }
 
+  get '/about', to: 'welcome#about'
+
   authenticated :user do # ログインしないとアクセスできない設定
 
     resources  :users, only: [:update, :edit]
