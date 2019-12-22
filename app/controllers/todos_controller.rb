@@ -1,4 +1,14 @@
 class TodosController < ApplicationController
+
+  # 投稿者のみ自身の情報を編集、更新できる
+  before_action :todo_correct_user, only: [:edit, :update, :destroy]
+  def todo_correct_user
+    todo_user = Todo.find(params[:calender_id]).user
+    unless todo_user == current_user
+      redirect_to calender_path(current_user)
+    end
+  end
+
   def new
     @todo  = Todo.new
     @todo.category  = "work" #radio_buttonの初期値
