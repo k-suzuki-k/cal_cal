@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.validationEngine-en
+//= require jquery.validationEngine-ja
 //= require jquery.validationEngine
 //
 //= require bootstrap
