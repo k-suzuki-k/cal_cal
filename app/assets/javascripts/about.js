@@ -10,3 +10,6 @@ $(document).on('turbolinks:load', function() {
     }
   });
 });
+$(document).on('turbolinks:before-cache', function() {
+    $('#calendar_about_page').empty();
+});
