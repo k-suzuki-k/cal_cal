@@ -21,24 +21,17 @@ class TodosController < ApplicationController
     search_day = todo_params[:day]
 
     if @todo.save
-
       #todo_listの抽出
-      @todos = Todo.where(user_id: current_user.id).where(day: search_day).order(:start_time).order(:end_time)
-
+      @todos = Todo.user_todo_list(current_user.id, search_day).order_todo_list
       respond_to do |format|
-        format.html { redirect_to :new_calender_todo, notice: 'todos was successfully created!!!'}
-        format.json { render 'calender#show', status: :created, location: @todos }
         format.js
-      else
-        format.html { render :new }
-        format.json { render json: @todo.errors, status: :unprocessable_entity }
       end
     end
-
   end
 
+  # 入力フォームの日付を変えると非同期で検索結果を返す
   def search
-    @todos = Todo.where(user_id: current_user.id).where('day LIKE(?)', "%#{params[:keyword]}%").order(:start_time).order(:end_time)
+    @todos = Todo.where(user_id: current_user.id).where('day LIKE(?)', "%#{params[:keyword]}%").order_todo_list
     respond_to do |format|
       format.json { render 'calender#show', json: @todos }
     end
@@ -53,10 +46,8 @@ class TodosController < ApplicationController
     @search_day = todo_params[:day] #todoリストのタイトルを変えるためインスタンス変数
 
     if @todo.update(todo_params)
-
       #todo_listの抽出
-      @todos = Todo.where(user_id: current_user.id).where(day: @search_day)
-
+      @todos = Todo.user_todo_list(current_user.id, @search_day).order_todo_list
       respond_to do |format|
         format.js
       end
@@ -69,8 +60,7 @@ class TodosController < ApplicationController
 
     if @todo.destroy
       #todo_listの抽出
-      @todos = Todo.where(user_id: current_user.id).where(day: search_day).order(:start_time).order(:end_time)
-
+      @todos = Todo.user_todo_list(current_user.id, search_day).order_todo_list
       respond_to do |format|
         format.js
       end
@@ -81,5 +71,4 @@ class TodosController < ApplicationController
   def todo_params
     params.require(:todo).permit(:id, :user_id, :day, :title, :start_time, :end_time, :category, :content, :image)
   end
-
 end
