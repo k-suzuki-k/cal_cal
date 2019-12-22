@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
 
   # ログインユーザのみ自身の情報を編集、更新できる
-  include CommonActions
   before_action :correct_user, only: [:edit, :update]
+  def correct_user
+    user = User.find(params[:id])
+    unless user == current_user
+      redirect_to calender_path(current_user)
+    end
+  end
 
   def edit
     @user = User.find(params[:id])
