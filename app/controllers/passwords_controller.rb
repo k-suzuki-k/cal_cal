@@ -4,14 +4,12 @@ class PasswordsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if current_user.update_with_password(password_params)
-        # パスワードを変更するとログアウトしてしまうので、再ログインが必要
-        sign_in(current_user, bypass: true)
-        format.html { redirect_to calender_path }
-      else
-        format.html { redirect_to edit_password_path }
-      end
+    if current_user.update_with_password(password_params)
+      # パスワードを変更するとログアウトしてしまうので、再ログインが必要
+      sign_in(current_user, bypass: true)
+      redirect_to calender_path, flash: {notise: "パスワードの変更が完了しました。"}
+    else
+      redirect_to edit_password_path, flash: {error: "パスワードの変更に失敗しました。"}
     end
   end
 
