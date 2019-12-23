@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :post_correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @posts = Post.where(user_id: params[:format]).order(day: "DESC")
+    @posts = Post.where(user_id: params[:format]).order(day: "DESC").includes(:user)
     @user = User.find(params[:format])
   end
 
@@ -58,7 +58,7 @@ class PostsController < ApplicationController
 
   # search_js.erbをレスポンスする
   def search
-    @posts = Post.post_search(params)
+    @posts = Post.post_search(params).includes(:user)
   end
 
   private
