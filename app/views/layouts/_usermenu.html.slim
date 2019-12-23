@@ -4,7 +4,7 @@ nav.drawer-nav
     /プロフィール画像
     .text-center.mt-3.mb-3
       - if current_user.image.blank?
-        = image_tag "/assets/noimage.jpg", :size => '100x100', class: 'img-thumbnail rounded'
+        = image_tag "noimage.jpg", :size => '100x100', class: 'img-thumbnail rounded'
       - else
         = image_tag current_user.image.to_s, :size => '100x100', class: 'img-thunbnail rounded'
 

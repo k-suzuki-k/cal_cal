@@ -10,7 +10,7 @@ table.table.mt-3
       tr.post_row data-href="/posts/#{post.id}"
         td
           - if post.user.image.blank?
-            = image_tag "/assets/noimage.jpg", :size => '100x100', class: 'img-thumbnail rounded'
+            = image_tag "noimage.jpg", :size => '100x100', class: 'img-thumbnail rounded'
           - else
             = image_tag post.user.image.to_s, :size => '100x100', class: 'img-thunmbnail rounded'
         td
