@@ -1,27 +1,11 @@
 //時間入力の補助
-$(document).on('turbolinks:load', function() {
-  $('.timepicker').timepicki({
-    show_meridian:false,
-    min_hour_value:0,
-    max_hour_value:23,
-    step_size_minutes:5,
-    overflow_minutes:true,
-    increase_direction:'up',
-    disable_keyboard_mobile: true});
-});
-$(document).ready(function(){
-  $(document).on("click", ".timepicker", function() {
-    $('.timepicker').timepicki({
-      show_meridian:false,
-      min_hour_value:0,
-      max_hour_value:23,
-      step_size_minutes:5,
-      overflow_minutes:true,
-      increase_direction:'up',
-      disable_keyboard_mobile: true});
+$(document).on('turbolinks:load click', function() {
+  $('.timepicker').timepicker({
+    'timeFormat': 'H:i',
+    'step': 15,
+    'forceRoundTime': true,
   });
 });
-
 
 //todoをクリックすると詳細フォームが表示される
 $(document).ready(function(){
