@@ -2,12 +2,6 @@ class PostsController < ApplicationController
 
   # 投稿者のみ自身の情報を編集、更新できる
   before_action :post_correct_user, only: [:edit, :update, :destroy]
-  def post_correct_user
-    post_user = Post.find(params[:id]).user
-    unless post_user == current_user
-      redirect_to calender_path(current_user)
-    end
-  end
 
   def index
     @posts = Post.where(user_id: params[:format]).order(day: "DESC")
@@ -68,7 +62,15 @@ class PostsController < ApplicationController
   end
 
   private
+
   def post_params
     params.require(:post).permit(:user_id, :day, :title, :content)
+  end
+
+  def post_correct_user
+    post_user = Post.find(params[:id]).user
+    unless post_user == current_user
+      redirect_to calender_path(current_user)
+    end
   end
 end

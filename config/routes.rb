@@ -3,20 +3,20 @@ Rails.application.routes.draw do
   root to: 'welcome#index'
   get '/welcome', to: 'welcome#index'
 
+  get '/about', to: 'welcome#about'
+
   # デバイスの設定
   devise_for :users, :controllers => {
      :registrations => 'users/registrations',
      :sessions => 'users/sessions'
   }
 
-  get '/about', to: 'welcome#about'
-
   authenticated :user do # ログインしないとアクセスできない設定
 
-    resources  :users, only: [:update, :edit]
+    resources :users, only: [:update, :edit]
 
-    resources  :calender, only: [:show] do
-      resources :todos
+    resources :calender, only: [:show] do
+      resources :todos, except: [:index, :edit]
     end
 
     # 検索画面の表示
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     # 検索結果を非同期で出力させる
     get '/posts/search', to: 'posts#search'
 
-    resources  :posts
+    resources :posts
 
     # todo_list を作成するため
     get '/todos/search', to: 'todos#search'
@@ -33,7 +33,6 @@ Rails.application.routes.draw do
     get '/destroy_confirm', to: 'users#destroy_confirm', as: :user_destroy_confirm
 
     # パスワード変更
-    resources  :passwords, only: [:update, :edit]
+    resources :passwords, only: [:update, :edit]
   end
-
 end
