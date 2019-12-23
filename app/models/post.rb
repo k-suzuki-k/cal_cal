@@ -21,4 +21,8 @@ class Post < ApplicationRecord
      where(['content like ?', "%#{content}%"]) if content.present?
   }
 
+  # todolistを時間をもとに昇順に並べる
+  scope :order_todo_list, ->  {
+    order(:start_time).order(:end_time)
+  }
 end
