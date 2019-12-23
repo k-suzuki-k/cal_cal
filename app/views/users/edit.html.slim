@@ -12,7 +12,7 @@
             = image_tag @user.image.to_s, :size => '300x200', class: 'mg-thumbnail rounded d-block mt-3'
 
           - else
-            = image_tag "/assets/noimage.jpg", :size => '300x200', class: 'mg-thumbnail rounded d-block mt-3'
+            = image_tag "noimage.jpg", :size => '300x200', class: 'mg-thumbnail rounded d-block mt-3'
 
       = form_with(model: @user, local: true, class: "validate_field") do |form|
         .form-group

@@ -6,7 +6,7 @@
           /プロフィール画像
           .post_profile_content
             - if @user.image.blank?
-              = image_tag "/assets/noimage.jpg", :size => '150x150', class: 'img-thumbnail rounded'
+              = image_tag "noimage.jpg", :size => '150x150', class: 'img-thumbnail rounded'
             - else
               = image_tag @user.image.to_s, :size => '150x150', class: 'img-thumbnail rounded'
 
