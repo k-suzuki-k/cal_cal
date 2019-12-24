@@ -113,3 +113,8 @@ gem 'jQuery-Validation-Engine-rails'
 # カレンダー
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+
+# AWS上でもテストデータを作成するため
+gem 'factory_bot_rails'
+gem 'faker'
+gem 'faker-japanese'
