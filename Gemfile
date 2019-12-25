@@ -60,6 +60,7 @@ group :development, :test do
   gem 'faker-japanese'     # 本物っぽいテストデータの作成（日本語対応）
   gem 'capybara'
   gem 'selenium-webdriver'
+  #gem 'webdrivers'
 end
 
 group :development do

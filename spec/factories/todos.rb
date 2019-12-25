@@ -16,6 +16,17 @@ FactoryBot.define do
     trait :not_time_format do
       start_time { "not time" }
     end
+
+    trait :not_time_format do
+      start_time { "not time" }
+    end
+  end
+
+  factory :todos_5, class: Todo do
+    day { Time.now.strftime("%Y-%m-%d") }
+    start_time { "12:00" }
+    end_time { "13:00" }
+    association :user
   end
 
   # seed用
