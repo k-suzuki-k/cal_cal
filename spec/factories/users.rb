@@ -47,5 +47,11 @@ FactoryBot.define do
         create_list(:seed_post,  3, user: user)
       }
     end
+
+    trait :with_5todos do
+      after(:create) { |user|
+        create_list(:todos_5, 5, user: user)
+      }
+    end
   end
 end
